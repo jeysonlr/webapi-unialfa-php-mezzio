@@ -1,0 +1,202 @@
+{
+	"info": {
+		"_postman_id": "6f498724-6d47-4e05-be4c-6b421b5b40ad",
+		"name": "API Aula Pós Galvao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/acesso/atualizar/4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"acesso",
+								"atualizar",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/acesso/atualizar/4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"acesso",
+										"atualizar",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 29 Jan 2022 20:28:08 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.52 (Debian)"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.15"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=99"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"Registro com id 4 atualizado com sucesso!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/acesso/excluir/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"acesso",
+								"excluir",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/acesso/visualizar/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"acesso",
+								"visualizar",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/acesso/listar",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"acesso",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"tkenBody\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/acesso/cadastrar",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"acesso",
+								"cadastrar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/ping",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
