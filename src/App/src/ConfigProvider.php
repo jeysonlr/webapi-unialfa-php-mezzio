@@ -4,8 +4,16 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Handler\NewHandler;
-use App\Handler\NewHandlerFactory;
+use App\Handler\AtualizarAcessoHandler;
+use App\Handler\AtualizarAcessoHandlerFactory;
+use App\Handler\ListarAcessoHandler;
+use App\Handler\ExcluirAcessoHandler;
+use App\Handler\CadastroAcessoHandler;
+use App\Handler\VisualizarAcessoHandler;
+use App\Handler\ListarAcessoHandlerFactory;
+use App\Handler\ExcluirAcessoHandlerFactory;
+use App\Handler\CadastroAcessoHandlerFactory;
+use App\Handler\VisualizarAcessoHandlerFactory;
 
 /**
  * The configuration provider for the App module
@@ -40,7 +48,11 @@ class ConfigProvider
             'factories'  => [
                 Handler\HomePageHandler::class => Handler\HomePageHandlerFactory::class,
 
-                NewHandler::class => NewHandlerFactory::class,
+                CadastroAcessoHandler::class => CadastroAcessoHandlerFactory::class,
+                ListarAcessoHandler::class => ListarAcessoHandlerFactory::class,
+                VisualizarAcessoHandler::class => VisualizarAcessoHandlerFactory::class,
+                ExcluirAcessoHandler::class => ExcluirAcessoHandlerFactory::class,
+                AtualizarAcessoHandler::class => AtualizarAcessoHandlerFactory::class,
             ],
         ];
     }
