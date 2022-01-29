@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  php:
+    container_name: webapi
+    build:
+      context: .
+    volumes:
+      - ./:/var/www
+    ports:
+      - 8094:80
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    container_name: db
+    command: --default-authentication-plugin=mysql_native_password
+    volumes: 
+      - ${MYSQL_DATA_DIR-./data/mysql}:/var/lib/mysql
+      - ${MYSQL_LOG_DIR-./logs/mysql}:/var/log/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+
+  adminer:
+    container_name: adminer2
+    image: adminer
+    ports:
+      - 8081:8080
+    depends_on:
+      - db
