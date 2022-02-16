@@ -38,6 +38,6 @@ class ListarAcessoHandler implements RequestHandlerInterface
             $result->next();
         }
 
-        return new JsonResponse(['data' => $data], 200);
+        return new JsonResponse(['data' => ($result->current() === false) ? "Nenhum registro encontrado!" : $data], 200);
     }
 }

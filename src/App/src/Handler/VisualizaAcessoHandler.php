@@ -9,7 +9,7 @@ use Laminas\Diactoros\Response\JsonResponse;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class VisualizarAcessoHandler implements RequestHandlerInterface
+class VisualizaAcessoHandler implements RequestHandlerInterface
 {
     /** @var Adapter */
     private $dbAdapter;

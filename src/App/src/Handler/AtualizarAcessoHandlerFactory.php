@@ -10,12 +10,12 @@ class AtualizarAcessoHandlerFactory
 {
     /**
      * @param ContainerInterface $container
-     * @return AtualizarAcessoHandler
+     * @return AtualizaAcessoHandler
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container): AtualizarAcessoHandler
+    public function __invoke(ContainerInterface $container): AtualizaAcessoHandler
     {
-        return new AtualizarAcessoHandler($container->get('DbAdapter'));
+        return new AtualizaAcessoHandler($container->get('DbAdapter'));
     }
 }

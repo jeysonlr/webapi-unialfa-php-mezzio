@@ -21,12 +21,12 @@ RUN docker-php-ext-install pdo pdo_mysql
 
 ###############
 # Add application source to container
-ADD . /var/www/html/
+ADD . /var/www/
 
-RUN chown -R 1000:1000 /var/www/html
-WORKDIR "/var/www/html"
+RUN chown -R 1000:1000 /var/www
+WORKDIR "/var/www"
 
 RUN composer install
-RUN chmod 777 -Rf /var/www/html/data /var/www/html/vendor
+RUN chmod 777 -Rf /var/www/data /var/www/vendor
 
 # EXPOSE 80

@@ -4,15 +4,17 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Handler\AtualizarAcessoHandler;
-use App\Handler\AtualizarAcessoHandlerFactory;
+use App\Handler\AcessoHandler;
 use App\Handler\ListarAcessoHandler;
 use App\Handler\ExcluirAcessoHandler;
+use App\Handler\AcessoHandlerFactory;
+use App\Handler\AtualizaAcessoHandler;
 use App\Handler\CadastroAcessoHandler;
-use App\Handler\VisualizarAcessoHandler;
+use App\Handler\VisualizaAcessoHandler;
 use App\Handler\ListarAcessoHandlerFactory;
 use App\Handler\ExcluirAcessoHandlerFactory;
 use App\Handler\CadastroAcessoHandlerFactory;
+use App\Handler\AtualizarAcessoHandlerFactory;
 use App\Handler\VisualizarAcessoHandlerFactory;
 
 /**
@@ -50,9 +52,11 @@ class ConfigProvider
 
                 CadastroAcessoHandler::class => CadastroAcessoHandlerFactory::class,
                 ListarAcessoHandler::class => ListarAcessoHandlerFactory::class,
-                VisualizarAcessoHandler::class => VisualizarAcessoHandlerFactory::class,
+                VisualizaAcessoHandler::class => VisualizarAcessoHandlerFactory::class,
                 ExcluirAcessoHandler::class => ExcluirAcessoHandlerFactory::class,
-                AtualizarAcessoHandler::class => AtualizarAcessoHandlerFactory::class,
+                AtualizaAcessoHandler::class => AtualizarAcessoHandlerFactory::class,
+
+                AcessoHandler::class => AcessoHandlerFactory::class,
             ],
         ];
     }

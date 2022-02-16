@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class AtualizarAcessoHandler implements RequestHandlerInterface
+class AtualizaAcessoHandler implements RequestHandlerInterface
 {
     /** @var Adapter */
     private $dbAdapter;

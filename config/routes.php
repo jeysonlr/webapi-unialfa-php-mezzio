@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 use Mezzio\Application;
 use Mezzio\MiddlewareFactory;
+use App\Handler\AcessoHandler;
 use App\Handler\ListarAcessoHandler;
 use Psr\Container\ContainerInterface;
 use App\Handler\ExcluirAcessoHandler;
 use App\Handler\CadastroAcessoHandler;
-use App\Handler\AtualizarAcessoHandler;
-use App\Handler\VisualizarAcessoHandler;
+use App\Handler\AtualizaAcessoHandler;
+use App\Handler\VisualizaAcessoHandler;
 
 /**
  * laminas-router route configuration
@@ -46,6 +47,10 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     $app->get('/', App\Handler\HomePageHandler::class, 'home');
     $app->get('/api/ping', App\Handler\PingHandler::class, 'api.ping');
 
+    $app->route('/v1/acesso', AcessoHandler::class, [
+        'GET', 'POST', 'PATCH', 'DELETE'
+    ]);
+
     $app->post('/acesso/cadastrar',
         CadastroAcessoHandler::class,
         'acesso.cadastrar'
@@ -57,12 +62,12 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     );
 
     $app->get('/acesso/visualizar/:id',
-        VisualizarAcessoHandler::class,
+        VisualizaAcessoHandler::class,
         'visualizar.cadastrar'
     );
 
     $app->put('/acesso/atualizar/:id',
-        AtualizarAcessoHandler::class,
+        AtualizaAcessoHandler::class,
         'atualizar.cadastrar'
     );
 
