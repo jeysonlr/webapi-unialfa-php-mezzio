@@ -7,4 +7,3 @@
 vendor/
 /.laminas-ci
 .laminas-ci/
-.env

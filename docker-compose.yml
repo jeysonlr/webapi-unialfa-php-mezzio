@@ -20,16 +20,13 @@ services:
       - ${MYSQL_DATA_DIR-./data/mysql}:/var/lib/mysql
       - ${MYSQL_LOG_DIR-./logs/mysql}:/var/log/mysql
     environment:
-      MYSQL_USER: root
+      MYSQL_USER: user
       MYSQL_PASSWORD: 1234
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: apiunialfa
-#    environment:
-#      - MYSQL_ROOT_PASSWORD
-#      - MYSQL_DATABASE
 
   adminer:
-    container_name: adminer2
+    container_name: adminer
     image: adminer
     ports:
       - 8081:8080

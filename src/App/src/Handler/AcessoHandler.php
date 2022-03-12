@@ -23,20 +23,19 @@ class AcessoHandler implements RequestHandlerInterface
         $this->dbAdapter = $dbAdapter;
     }
 
+    /**
+     * @param ServerRequestInterface $request
+     * @return ResponseInterface
+     */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         $data = array();
         $method = $request->getMethod();
         $sql = new Sql($this->dbAdapter);
         $queryParams = $request->getQueryParams();
-//        $paramToken = $queryParams['id'];
 
         switch ($method) {
             case 'GET':
-//                var_dump(is_null($queryParams));
-//                var_dump(empty($queryParams));
-////                var_dump($paramToken);
-//                exit;
                 $select = $sql->select('acesso');
                 $select->columns(['token']);
 
@@ -70,7 +69,7 @@ class AcessoHandler implements RequestHandlerInterface
                 $body = json_decode($request->getBody()->getContents());
                 $update = $sql->update('acesso');
                 $update->set(['token'=> $body->token]);
-//                $paramToken = empty($queryParams) ?? $queryParams['id'];
+
                 $update->where(['id' => $queryParams['id']]);
 
                 $stmt = $sql->prepareStatementForSqlObject($update);
@@ -82,14 +81,13 @@ class AcessoHandler implements RequestHandlerInterface
 
             case 'DELETE':
                 $delete = $sql->delete('acesso');
-                $delete->where(['id' => $request->getAttribute('id')]);
+                $delete->where(['id' => $queryParams['id']]);
 
                 $stmt = $sql->prepareStatementForSqlObject($delete);
                 $stmt->execute();
 
                 return new EmptyResponse(204);
             break;
-
         }
     }
 }

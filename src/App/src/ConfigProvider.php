@@ -5,17 +5,11 @@ declare(strict_types=1);
 namespace App;
 
 use App\Handler\AcessoHandler;
-use App\Handler\ListarAcessoHandler;
-use App\Handler\ExcluirAcessoHandler;
+use App\Handler\ProdutoHandler;
+use App\Handler\CategoriaHandler;
 use App\Handler\AcessoHandlerFactory;
-use App\Handler\AtualizaAcessoHandler;
-use App\Handler\CadastroAcessoHandler;
-use App\Handler\VisualizaAcessoHandler;
-use App\Handler\ListarAcessoHandlerFactory;
-use App\Handler\ExcluirAcessoHandlerFactory;
-use App\Handler\CadastroAcessoHandlerFactory;
-use App\Handler\AtualizarAcessoHandlerFactory;
-use App\Handler\VisualizarAcessoHandlerFactory;
+use App\Handler\ProdutoHandlerFactory;
+use App\Handler\CategoriaHandlerFactory;
 
 /**
  * The configuration provider for the App module
@@ -50,13 +44,9 @@ class ConfigProvider
             'factories'  => [
                 Handler\HomePageHandler::class => Handler\HomePageHandlerFactory::class,
 
-                CadastroAcessoHandler::class => CadastroAcessoHandlerFactory::class,
-                ListarAcessoHandler::class => ListarAcessoHandlerFactory::class,
-                VisualizaAcessoHandler::class => VisualizarAcessoHandlerFactory::class,
-                ExcluirAcessoHandler::class => ExcluirAcessoHandlerFactory::class,
-                AtualizaAcessoHandler::class => AtualizarAcessoHandlerFactory::class,
-
                 AcessoHandler::class => AcessoHandlerFactory::class,
+                CategoriaHandler::class => CategoriaHandlerFactory::class,
+                ProdutoHandler::class => ProdutoHandlerFactory::class,
             ],
         ];
     }
