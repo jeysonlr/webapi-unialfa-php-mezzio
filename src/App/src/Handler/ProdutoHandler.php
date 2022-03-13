@@ -62,7 +62,7 @@ class ProdutoHandler implements RequestHandlerInterface
                     $result->next();
                 }
 
-                return new JsonResponse(['data' => $data], 200);
+                return new JsonResponse(['data' => $data], (count($data) > 0) ? 200 : 204);
 
                 break;
 
@@ -73,7 +73,7 @@ class ProdutoHandler implements RequestHandlerInterface
                     return new JsonResponse([
                         "error" => "Não foi possível cadastrar o produto!",
                         "reason" => "Não foi localizada nenhuma categoria com id {$body->categoria_id}"
-                    ],401);
+                    ],400);
                 }
 
                 $insert = $this->sql->insert('produto');
@@ -90,6 +90,14 @@ class ProdutoHandler implements RequestHandlerInterface
 
             case 'PATCH':
                 $body = json_decode($request->getBody()->getContents());
+
+                if (!$this->buscarCategoria($body->categoria_id)) {
+                    return new JsonResponse([
+                        "error" => "Não foi possível atualizar o produto!",
+                        "reason" => "Não foi localizada nenhuma categoria com id {$body->categoria_id}"
+                    ],400);
+                }
+
                 $update = $this->sql->update('produto');
                 $update->set([
                     'nome'=> $body->nome,

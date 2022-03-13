@@ -8,6 +8,8 @@ use App\Handler\AcessoHandler;
 use App\Handler\ProdutoHandler;
 use App\Handler\CategoriaHandler;
 use Psr\Container\ContainerInterface;
+use App\Handler\Swagger\SwaggerHandler;
+use App\Handler\Swagger\DocumentationHandler;
 
 return static function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
     $app->get('/', App\Handler\HomePageHandler::class, 'home');
@@ -30,4 +32,13 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
         'GET', 'POST', 'PATCH', 'DELETE'
         ]
     );
+
+    $app->get('/v1/documentacao', [
+        SwaggerHandler::class,
+    ], 'infrastructure.swagger');
+
+    $app->get('/v1/documentacao/json', [
+        DocumentationHandler::class
+    ], 'nfrastructure.documentation');
+
 };

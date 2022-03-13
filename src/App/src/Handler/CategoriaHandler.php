@@ -51,7 +51,7 @@ class CategoriaHandler implements RequestHandlerInterface
                     $result->next();
                 }
 
-                return new JsonResponse(['data' => $data], 200);
+                return new JsonResponse(['data' => $data], (count($data) > 0) ? 200 : 204);
 
                 break;
 

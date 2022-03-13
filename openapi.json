@@ -1,0 +1,635 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Web api ALFA",
+    "description": "Api construída como trabalho de conclusão de matéria",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8094",
+      "description": "url de desenvolvimento"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "HEALT CHECK"
+        ],
+        "summary": "Verifica se API esta disponível",
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "Mensagem":"Olá mundo Mezzio"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ping": {
+      "get": {
+        "tags": [
+          "PING"
+        ],
+        "summary": "Verifica PING da API, por horário",
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso",
+            "content": {
+              "application/json": {
+                "example": {
+                  "ack": "12/03/2022 17:45:54"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/v1/acesso": {
+      "get": {
+        "tags": [
+          "ACESSO"
+        ],
+        "summary": "Realiza a busca de todos os dados de acesso",
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[
+                    {
+                      "token": "token"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ACESSO"
+        ],
+        "summary": "Cria o registro de um dado de acesso",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Acesso"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/v1/acesso?id=1": {
+      "get": {
+        "tags": [
+          "ACESSO"
+        ],
+        "summary": "Realiza a busca de um dado de acesso por id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[
+                    {
+                      "token": "token"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ACESSO"
+        ],
+        "summary": "Apaga um determinado dado de acesso",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "ACESSO"
+        ],
+        "summary": "Atualiza um determinado dado de acesso",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Acesso"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+
+    "/v1/categoria": {
+      "get": {
+        "tags": [
+          "CATEGORIA"
+        ],
+        "summary": "Realiza a busca de todas as categorias",
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[
+                    {
+                      "id": "1",
+                      "categoria_nome": "Higiene pessoal"
+                    },
+                    {
+                      "id": "2",
+                      "categoria_nome": "Limpeza"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CATEGORIA"
+        ],
+        "summary": "Cria o registro de uma categoria",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Categoria"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/v1/categoria?id=1": {
+      "get": {
+        "tags": [
+          "CATEGORIA"
+        ],
+        "summary": "Realiza a busca de uma categoria por id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[
+                    {
+                      "id": "1",
+                      "categoria_nome": "Higiene pessoal"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CATEGORIA"
+        ],
+        "summary": "Apaga um determinado registro de categoria",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "CATEGORIA"
+        ],
+        "summary": "Atualiza um determinado registro de categoria",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Categoria"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+
+    "/v1/produto": {
+      "get": {
+        "tags": [
+          "PRODUTO"
+        ],
+        "summary": "Realiza a busca de todos os produtos",
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": [
+                    {
+                      "id": "1",
+                      "nome": "Sabonete",
+                      "preco": "1.00",
+                      "categoria_id": "1",
+                      "categoria_nome": "Higiene pessoal"
+                    },
+                    {
+                      "id": "2",
+                      "nome": "Detergente",
+                      "preco": "2.00",
+                      "categoria_id": "2",
+                      "categoria_nome": "Limpeza"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "PRODUTO"
+        ],
+        "summary": "Cria o registro de um produto",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Produto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Não foi possível cadastrar o produto!",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Não foi possível cadastrar o produto!",
+                  "reason": "Não foi localizada nenhuma categoria com id 258"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/produto?id=1": {
+      "get": {
+        "tags": [
+          "PRODUTO"
+        ],
+        "summary": "Realiza a busca de um produto por id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": [
+                    {
+                      "id": "1",
+                      "nome": "Sabonete",
+                      "preco": "1.00",
+                      "categoria_id": "1",
+                      "categoria_nome": "Higiene pessoal"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "PRODUTO"
+        ],
+        "summary": "Apaga um determinado produto",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "PRODUTO"
+        ],
+        "summary": "Atualiza um determinado produto",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Produto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Não foi possível atualizar o produto!",
+            "content": {
+              "application/json": {
+                "example": {
+                    "error": "Não foi possível atualizar o produto!",
+                    "reason": "Não foi localizada nenhuma categoria com id 258"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Acesso": {
+        "title": "Acesso",
+        "required": [
+          "token"
+        ],
+        "properties": {
+          "token": {
+            "type": "string",
+            "example": "token"
+          }
+        }
+      },
+      "Categoria": {
+        "title": "Categoria",
+        "required": [
+          "categoria_nome"
+        ],
+        "properties": {
+          "categoria_nome": {
+            "type": "string",
+            "example": "limpeza"
+          }
+        }
+      },
+      "Produto": {
+        "title": "Produto",
+        "required": [
+          "categoria_id",
+          "nome",
+          "preco"
+        ],
+        "properties": {
+          "categoria_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "nome": {
+            "type": "string",
+            "example": "sabonote"
+          },
+          "preco": {
+            "type": "number",
+            "example": 1.00
+          }
+        }
+      }
+    }
+  }
+}

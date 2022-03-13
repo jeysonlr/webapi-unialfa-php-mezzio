@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace App;
 
+use App\Container\CorsFactory;
 use App\Handler\AcessoHandler;
 use App\Handler\ProdutoHandler;
 use App\Handler\CategoriaHandler;
 use App\Handler\AcessoHandlerFactory;
 use App\Handler\ProdutoHandlerFactory;
 use App\Handler\CategoriaHandlerFactory;
+use App\Handler\Swagger\DocumentationHandler;
+use App\Handler\Swagger\SwaggerHandler;
+use Tuupola\Middleware\CorsMiddleware;
 
 /**
  * The configuration provider for the App module
@@ -40,6 +44,9 @@ class ConfigProvider
         return [
             'invokables' => [
                 Handler\PingHandler::class => Handler\PingHandler::class,
+
+                SwaggerHandler::class => SwaggerHandler::class,
+                DocumentationHandler::class => DocumentationHandler::class,
             ],
             'factories'  => [
                 Handler\HomePageHandler::class => Handler\HomePageHandlerFactory::class,
@@ -47,6 +54,8 @@ class ConfigProvider
                 AcessoHandler::class => AcessoHandlerFactory::class,
                 CategoriaHandler::class => CategoriaHandlerFactory::class,
                 ProdutoHandler::class => ProdutoHandlerFactory::class,
+
+                CorsMiddleware::class => CorsFactory::class,
             ],
         ];
     }
@@ -58,9 +67,9 @@ class ConfigProvider
     {
         return [
             'paths' => [
-                'app'    => [__DIR__ . '/../templates/app'],
-                'error'  => [__DIR__ . '/../templates/error'],
-                'layout' => [__DIR__ . '/../templates/layout'],
+//                'app'    => [__DIR__ . '/../templates/app'],
+//                'error'  => [__DIR__ . '/../templates/error'],
+//                'layout' => [__DIR__ . '/../templates/layout'],
             ],
         ];
     }
