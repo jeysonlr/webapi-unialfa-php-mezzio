@@ -12,15 +12,18 @@ $ composer install
 $ composer-development-enable
 ```
 
-### Acess aplication in [click here](http://localhost:8094)
+### Acesso a aplicação em [click here](http://localhost:8094)
 
-# Atention please
-## Documentation Swagger for Application in [click here](http://localhost:8094/v1/documentacao)
-## json Swagger for application in [click here](http://localhost:8094/v1/documentacao/json)
+# Atenção
+## Utilizar esta release, pois foi realizado uma atualização no nome de uma coluna
+## Release sql esta localizada em ./data/db/schema.sql
 
-### Documentation routes in postman [click here](https://documenter.getpostman.com/view/7013209/UVeCQTxs) or in raiz directory
+## Documentação SWAGGER da aplicação aqui [click here](http://localhost:8094/v1/documentacao)
+## json SWAGGER da aplicação aqui [click here](http://localhost:8094/v1/documentacao/json) ou na raiz do diretório em openapi.json
 
-### Acess adminer view database in [click here](http://localhost:8081)
+### Documentação POSTMAN aqui [click here](https://documenter.getpostman.com/view/7013209/UVeCQTxs) ou na raiz do diretório em API Aula Pós Galvao.postman_collection.json
 
-#### Data for connect on database in file docker-compose.yml
+### Acessar adminer para banco em [click here](http://localhost:8081)
+
+#### Dados para conectar no banco em docker-compose.yml
 
